@@ -31,4 +31,5 @@
     .grid.game-mode td {
         width: 5em;
         height: 5em;
+        cursor: crosshair;
     }

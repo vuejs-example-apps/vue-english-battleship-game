@@ -8,6 +8,9 @@ var Grid = Vue.component('Grid', function (resolve, reject) {
                     var row = cell_name.charCodeAt(0) - 'a'.charCodeAt(0);
                     var col = parseInt(cell_name.slice(1)) - 1;
                     return this.words[row][col];
+                },
+                handle_cell_shot: function (cell_name) {
+                    console.log(cell_name, ' was shot');
                 }
             },
             data: function () {
