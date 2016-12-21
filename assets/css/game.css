@@ -12,3 +12,13 @@
     #game .controls {
         margin-top: 2em;        
     }
+
+.enemy-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.my-grid {
+    display: flex;
+    justify-content: space-around;
+}

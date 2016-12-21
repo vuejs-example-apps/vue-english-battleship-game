@@ -1,5 +1,6 @@
 .grid {
     border: 1px solid black;
+    border-collapse: collapse;
 }
     .grid tr {
 
@@ -7,8 +8,14 @@
 
         .grid tr th {
             color: red;
+            border: 1px solid black;
         }
 
         .grid tr td {
-        
+            border: 1px solid black;            
         }
+
+    .grid.game-mode td {
+        width: 5em;
+        height: 5em;
+    }

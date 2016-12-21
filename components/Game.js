@@ -18,6 +18,12 @@ var App = Vue.component('Game', function (resolve, reject) {
                         this.chosen_grid.name = '';
                         this.chosen_grid.words = [];
                         this.grid_chosen = false;
+                    },
+                    shoot_enemy: function () {
+                        console.log('shoot_enemy', this, arguments);
+                    },
+                    take_a_shot: function () {
+                        console.log('take_a_shot', this, arguments);
                     }
                 }
             })
