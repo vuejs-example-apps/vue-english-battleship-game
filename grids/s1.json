@@ -1,0 +1,12 @@
+[
+    ["lose", "hold", "lay", "hurt", "know", "lead", "leave", "let", "keep", "lie"],
+    ["hit", "freeze", "grow", "get", "go", "hang", "have", "hear", "give", "hide"],
+    ["forget", "draw", "fall", "drive", "eat", "feel", "fight", "find", "drink", "fly"],
+    ["do", "buy", "catch", "build", "buy", "choose", "come", "cost", "burn", "cut"],
+    ["bring", "awake", "begin", "be", "become", "bend", "bite", "blow", "beat", "break"],
+    ["run", "make", "put", "mean", "pay", "read", "ride", "ring", "meet", "rise"],
+    ["speak", "say", "show", "see", "send", "shut", "set", "sit", "sell", "sleep"],
+    ["understand", "spend", "teach", "stand", "take", "tear", "tell", "think", "swim", "throw"],
+    ["bring", "wake", "begin", "wear", "write", "know", "eat", "sleep", "win", "buy"],
+    ["see", "do", "choose", "come", "keep", "go", "be", "meet", "grow", "lose"]
+]
