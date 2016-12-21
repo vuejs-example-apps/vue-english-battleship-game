@@ -5,8 +5,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr v-for="row in words">
-            <td v-for="word in row">{{ word }}</td>
+        <tr v-for="row in grid">
+            <td v-for="cell_name in row">
+                <div class="word">{{ word_for_cell(cell_name) }}</div>
+                <div class="cell_name">{{ cell_name }}</div>
+            </td>
         </tr>
     </tbody>
 </table>

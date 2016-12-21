@@ -7,13 +7,26 @@
     }
 
         .grid tr th {
-            color: red;
+            color: gray;
             border: 1px solid black;
+            font-size: 2em;
         }
 
         .grid tr td {
             border: 1px solid black;            
+            position: relative;
         }
+
+            .grid tr td .cell_name {
+                position: absolute;
+                left: .5em;
+                top: .5em;
+                color: gray;
+            }
+
+            .grid tr td .word {
+                font-weight: bold;
+            }
 
     .grid.game-mode td {
         width: 5em;

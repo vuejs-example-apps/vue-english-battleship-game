@@ -90,9 +90,16 @@
     "my_ships_placed": true,
     "my_ships": [
         {
-            "type": "carrier",
             "size": 5,
             "position": "a0",
+            "orientation": "horizontal"
+        }
+    ],
+
+    "enemy_ships": [
+        {
+            "size": 4,
+            "position": "b0",
             "orientation": "horizontal"
         }
     ],
@@ -104,5 +111,12 @@
         "a3": "killed"
     },
 
-    "my_turn": true
+    "enemy_shots": {
+        "b0": "miss",
+        "b1": "aimed",
+        "b2": "injured",
+        "b3": "killed"
+    },
+
+    "my_turn": false
 }

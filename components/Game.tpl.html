@@ -5,12 +5,22 @@
         
         <div class="enemy-grid" v-if="my_turn">
             <h2>Shoot!</h2>
-            <grid @shoot="shoot_enemy" mode="game" :words="enemy_grid.words" :name="enemy_grid.name"/>
+            <grid @shoot="shoot_enemy"
+                  mode="game"
+                  :words="enemy_grid.words" :name="enemy_grid.name"
+                  shots="my_shots"
+                  ships="enemy_ships"
+            />
         </div>
 
         <div class="my-grid" v-else>
             <h2>Take a shot!</h2>
-            <grid @shoot="take_a_shot" mode="game" :words="chosen_grid.words" :name="chosen_grid.name"/>
+            <grid @shoot="take_a_shot"
+                  mode="game"
+                  :words="chosen_grid.words" :name="chosen_grid.name"
+                  shots="enemy_shots"
+                  ships="my_ships"
+            />
         </div>
     </div>
 
