@@ -46,10 +46,10 @@
             background: yellow;
         }
 
-        .grid.game-mode td.injured {
+        .grid.game-mode td.damaged {
             background: orange;
         }
 
-        .grid.game-mode td.killed {
+        .grid.game-mode td.destroyed {
             background: red;
         }

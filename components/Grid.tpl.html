@@ -7,7 +7,7 @@
     <tbody>
         <tr v-for="row in grid">
             <td v-for="cell_name in row" @click="handle_cell_shot(cell_name)"
-                :class="[shots[cell_name], {ship: cleck_ship_presence(cell_name)}]">
+                :class="[shots[cell_name], {ship: check_ship_presence(cell_name)}]">
                 <div class="word">{{ word_for_cell(cell_name) }}</div>
                 <div class="cell_name">{{ cell_name }}</div>
             </td>

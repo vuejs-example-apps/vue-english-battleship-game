@@ -91,16 +91,21 @@
     "my_ships": [
         {
             "size": 5,
-            "position": "a0",
-            "orientation": "horizontal"
+            "position": "a3",
+            "is_vertical": false
         }
     ],
 
     "enemy_ships": [
         {
-            "size": 4,
-            "position": "b0",
-            "orientation": "horizontal"
+            "size": 5,
+            "position": "b4",
+            "is_vertical": true
+        },
+        {
+            "size": 2,
+            "position": "d6",
+            "is_vertical": false
         }
     ],
 
@@ -110,5 +115,5 @@
     "enemy_shots": {        
     },
 
-    "my_turn": false
+    "my_turn": true
 }

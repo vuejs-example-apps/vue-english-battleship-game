@@ -2,7 +2,7 @@ var Grid = Vue.component('Grid', function (resolve, reject) {
     ajax.get("/components/Grid.tpl.html", function (template_string) {
         resolve({
             template: template_string,
-            props: ['name', 'words', 'mode', 'ships', 'shots'],
+            props: ['name', 'words', 'mode', 'ships', 'shots', 'mine'],
             methods: {
                 word_for_cell: function (cell_name) {
                     var row = cell_name.charCodeAt(0) - 'a'.charCodeAt(0);
@@ -10,22 +10,73 @@ var Grid = Vue.component('Grid', function (resolve, reject) {
                     return this.words[row][col];
                 },
                 handle_cell_shot: function (cell_name) {
+                    return this.mine ? this.handle_my_cell_shot(cell_name) : this.handle_enemy_cell_shot(cell_name);
+                },
+                handle_my_cell_shot: function (cell_name) {
                     var previous_shot = this.shots[cell_name];
                     if (previous_shot && previous_shot !== 'aimed') {
                         return;
-                    }                                        
-                    var hit = confirm("Whas it a hit?")
+                    }
+                    var hit = previous_shot == 'aimed' || this.check_ship_presence(cell_name);
+                    if (!hit) {
+                        this.$emit('shot', cell_name, 'miss');
+                        return;
+                    }
+                    alert('Your ship has been attacked!');
+                    var hit_confirmed = confirm(`Is your opponent familiar with the forms of the verb ${this.word_for_cell(cell_name)}?`);
+                    this.$emit('shot', cell_name, hit_confirmed ? 'damaged' : 'aimed');
+                },
+                handle_enemy_cell_shot: function (cell_name) {
+                    var previous_shot = this.shots[cell_name];
+                    if (previous_shot && previous_shot !== 'aimed') {
+                        return;
+                    }
+                    var hit = previous_shot == 'aimed' || confirm("Was it a hit?")
                     if (!hit) {
                         this.$emit('shot', cell_name, 'miss');
                         return 
                     }
                     // var verb = prompt("What verb was there?");
                     // alert(`Now tell me the 2nd / 3rd form for the verb: ${verb} - ? - ?`);
-                    var confirmed = confirm("Were you familiar with this verb`s forms?");
-                    this.$emit('shot', cell_name, confirmed ? 'injured' : 'aimed');
+                    var hit_confirmed = confirm("Were you familiar with this verb`s forms?");
+                    if (hit_confirmed) {
+                        var destruction_confirmed = confirm("Was the ship destroyed?");
+                        this.$emit('shot', cell_name, destruction_confirmed ? 'destroyed' : 'damaged');
+                    } else {
+                        this.$emit('shot', cell_name, 'aimed');
+                    }
+
                 },
-                cleck_ship_presence: function (cell_name) {
-                    return Math.random() > 0.5;
+                check_ship_presence: function (cell_name) {
+                    var row = cell_name.charCodeAt(0) - 'a'.charCodeAt(0);
+                    var col = parseInt(cell_name.slice(1)) - 1;
+                    for (i in this.ships) {             
+                        var ship = this.ships[i];
+                        var ship_row = ship.position.charCodeAt(0) - 'a'.charCodeAt(0);
+                        var ship_col = parseInt(ship.position.slice(1)) - 1;
+                        var ship_located = false;                        
+                        if (ship.is_vertical) {        
+                            var diff = row - ship_row;
+                            if (ship_col == col && diff < ship.size && diff >= 0) {
+                                ship_located = true;
+                            }
+                        } else {
+                            // horizontal
+                            var diff = col - ship_col;
+                            if (ship_row == row && diff < ship.size && diff >= 0) {
+                                ship_located = true;
+                            }
+                            /*
+                            Consider ship of size 5 at a3: you want to match on a3, a4, a5, a6, a7 and not a1, a2, a8, a9, a10
+                            diff === (col - ship_col) [-2, -1, 0, 1, 2, 3, 4, 5]
+                            */
+                        }
+                        // console.log(cell_name, row, col, ship.position, ship_row, ship_col, ship.is_vertical, ship_located);
+                        if (ship_located) {
+                            return true;
+                        }
+                    }
+                    return false;
                 }
             },
             data: function () {

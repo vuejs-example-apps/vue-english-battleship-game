@@ -6,7 +6,7 @@
         <div class="enemy-grid" v-if="my_turn">
             <h2>Shoot!</h2>
             <grid @shot="shoot_enemy"
-                  mode="game"
+                  mode="game" :mine="false"
                   :words="enemy_grid.words" :name="enemy_grid.name"
                   :shots="my_shots"
                   :ships="enemy_ships"
@@ -16,7 +16,7 @@
         <div class="my-grid" v-else>
             <h2>Take a shot!</h2>
             <grid @shot="take_a_shot"
-                  mode="game"
+                  mode="game" :mine="true"
                   :words="chosen_grid.words" :name="chosen_grid.name"
                   :shots="enemy_shots"
                   :ships="my_ships"
