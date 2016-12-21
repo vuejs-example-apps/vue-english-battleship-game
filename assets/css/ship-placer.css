@@ -1,0 +1,8 @@
+.ship-placer {
+    display: flex;
+    justify-content: space-around;
+}
+
+    .ship-placer .grid {
+        cursor: pointer;
+    }

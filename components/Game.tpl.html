@@ -1,0 +1,20 @@
+<div id="game">
+    <h1>Vue English Battleship Game</h1>
+    
+    <div class="stage" v-if="grid_chosen">
+        <h2>Please place your ships</h2>
+        <div class="ship-placer">
+            <grid :words="chosen_grid.words" :name="chosen_grid.name"/>
+        </div>
+        <div class="controls">
+            <button @click="reset_grid_choice">Back to grid choice</button>
+        </div>
+    </div>
+
+    <div class="stage" v-else>
+        <h2>Please choose your grid</h2>
+        <div class="grid-chooser">
+            <grid v-for="words, grid_name in grids" :words="words" :name="grid_name" @click.native="choose_grid(grid_name)"/>
+        </div>
+    </div>
+</div>

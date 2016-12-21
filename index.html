@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue English Battleship Game</title>
+
+    <link rel="stylesheet" href="/assets/css/grid-chooser.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/ship-placer.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/game.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/grid.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/footer.css" type="text/css">
+</head>
+
+<body>
+    <div id="game">
+        <Game></Game>
+    </div>
+
+    <footer id="footer">
+        <a href="https://github.com/vuejs-example-apps">Vue.js Example Apps</a> by <a href="https://gbezyuk.github.io">gbezyuk</a>
+    </footer>
+
+    <script src="/vendor/vue@2.0.5.js"></script>
+    <script src="/vendor/ajax@0.0.0.min.js"></script>
+
+    <script type="text/javascript" src="/components/Grid.js"></script>
+    <script type="text/javascript" src="/components/Game.js"></script>
+    
+    <script type="text/javascript">
+        new Vue({el: '#game'})
+    </script>
+</body>
+
+</html>

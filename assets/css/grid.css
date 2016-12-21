@@ -1,0 +1,14 @@
+.grid {
+    border: 1px solid black;
+}
+    .grid tr {
+
+    }
+
+        .grid tr th {
+            color: red;
+        }
+
+        .grid tr td {
+        
+        }

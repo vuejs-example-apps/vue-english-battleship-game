@@ -1,0 +1,35 @@
+{
+    "grids": {
+        "S1": [
+            ["lose", "hold", "lay", "hurt", "know", "lead", "leave", "let", "keep", "lie"],
+            ["hit", "freeze", "grow", "get", "go", "hang", "have", "hear", "give", "hide"],
+            ["forget", "draw", "fall", "drive", "eat", "feel", "fight", "find", "drink", "fly"],
+            ["do", "buy", "catch", "build", "buy", "choose", "come", "cost", "burn", "cut"],
+            ["bring", "awake", "begin", "be", "become", "bend", "bite", "blow", "beat", "break"],
+            ["run", "make", "put", "mean", "pay", "read", "ride", "ring", "meet", "rise"],
+            ["speak", "say", "show", "see", "send", "shut", "set", "sit", "sell", "sleep"],
+            ["understand", "spend", "teach", "stand", "take", "tear", "tell", "think", "swim", "throw"],
+            ["bring", "wake", "begin", "wear", "write", "know", "eat", "sleep", "win", "buy"],
+            ["see", "do", "choose", "come", "keep", "go", "be", "meet", "grow", "lose"]
+        ],
+        "S2": [
+            ["lie", "lose", "hurt", "hold", "lay", "let", "know", "lead", "leave", "keep"],
+            ["hide", "hit", "get", "freeze", "grow", "hear", "go", "hang", "have", "give"],
+            ["fly", "forget", "drive", "draw", "fall", "find", "eat", "feel", "fight", "drink"],
+            ["cut", "do", "build", "buy", "catch", "cost", "buy", "choose", "come", "burn"],
+            ["break", "bring", "be", "awake", "begin", "blow", "become", "bend", "bite", "beat"],
+            ["rise", "run", "mean", "make", "put", "ring", "pay", "read", "ride", "meet"],
+            ["sleep", "speak", "see", "say", "show", "sit", "send", "shut", "set", "sell"],
+            ["throw", "understand", "stand", "spend", "teach", "think", "take", "tear", "tell", "swim"],
+            ["buy", "bring", "wear", "wake", "begin", "sleep", "write", "know", "eat", "win"],
+            ["lose", "see", "come", "do", "choose", "meet", "keep", "go", "be", "grow"]
+        ]
+    },
+    "grid_chosen": false,
+    "chosen_grid": {
+        "name": "",
+        "words": ""
+    },
+    "my_ships": [],
+    "my_shots": []
+}

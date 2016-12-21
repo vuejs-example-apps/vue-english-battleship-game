@@ -1,0 +1,8 @@
+.grid-chooser {
+    display: flex;
+    justify-content: space-around;
+}
+
+    .grid-chooser .grid {
+        cursor: pointer;
+    }

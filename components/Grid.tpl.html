@@ -1,0 +1,12 @@
+<table class="grid">
+    <thead>
+        <tr>
+            <th colspan="10">{{ name }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="row in words">
+            <td v-for="word in row">{{ word }}</td>
+        </tr>
+    </tbody>
+</table>
