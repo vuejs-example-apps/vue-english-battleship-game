@@ -8,8 +8,8 @@
             <grid @shoot="shoot_enemy"
                   mode="game"
                   :words="enemy_grid.words" :name="enemy_grid.name"
-                  shots="my_shots"
-                  ships="enemy_ships"
+                  :shots="my_shots"
+                  :ships="enemy_ships"
             />
         </div>
 
@@ -18,8 +18,8 @@
             <grid @shoot="take_a_shot"
                   mode="game"
                   :words="chosen_grid.words" :name="chosen_grid.name"
-                  shots="enemy_shots"
-                  ships="my_ships"
+                  :shots="enemy_shots"
+                  :ships="my_ships"
             />
         </div>
     </div>

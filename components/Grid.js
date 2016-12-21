@@ -10,7 +10,15 @@ var Grid = Vue.component('Grid', function (resolve, reject) {
                     return this.words[row][col];
                 },
                 handle_cell_shot: function (cell_name) {
-                    console.log(cell_name, ' was shot');
+                    var previous_shot = this.shots[cell_name];
+                    if (previous_shot && previous_shot !== 'aimed') {
+                        return;
+                    }                                        
+                    var hit = confirm("Whas it a hit?")
+                    var verb = prompt("What verb was there?");
+                    alert(`Now tell me the 2nd / 3rd form for the verb: ${verb} - ? - ?`);
+                    var confirmed = confirm("Were you familiar with this verb`s forms?");
+                    // raise shot event with the cell name and confirmation status
                 }
             },
             data: function () {
