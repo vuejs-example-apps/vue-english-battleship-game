@@ -15,10 +15,14 @@ var Grid = Vue.component('Grid', function (resolve, reject) {
                         return;
                     }                                        
                     var hit = confirm("Whas it a hit?")
-                    var verb = prompt("What verb was there?");
-                    alert(`Now tell me the 2nd / 3rd form for the verb: ${verb} - ? - ?`);
+                    if (!hit) {
+                        this.$emit('shot', cell_name, 'miss');
+                        return 
+                    }
+                    // var verb = prompt("What verb was there?");
+                    // alert(`Now tell me the 2nd / 3rd form for the verb: ${verb} - ? - ?`);
                     var confirmed = confirm("Were you familiar with this verb`s forms?");
-                    // raise shot event with the cell name and confirmation status
+                    this.$emit('shot', cell_name, confirmed ? 'injured' : 'aimed');
                 }
             },
             data: function () {
