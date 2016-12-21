@@ -43,7 +43,7 @@
         ]
     },
 
-    "enemy_grid": {
+    "default_enemy_grid": {
         "name": "Enemy Grid",
         "words": [
             ["", "", "", "", "", "", "", "", "", ""],
@@ -56,6 +56,22 @@
             ["", "", "", "", "", "", "", "", "", ""],
             ["", "", "", "", "", "", "", "", "", ""],
             ["", "", "", "", "", "", "", "", "", ""]
+        ]
+    },
+
+    "enemy_grid": {
+        "name": "S2",
+        "words": [
+            ["lie", "lose", "hurt", "hold", "lay", "let", "know", "lead", "leave", "keep"],
+            ["hide", "hit", "get", "freeze", "grow", "hear", "go", "hang", "have", "give"],
+            ["fly", "forget", "drive", "draw", "fall", "find", "eat", "feel", "fight", "drink"],
+            ["cut", "do", "build", "buy", "catch", "cost", "buy", "choose", "come", "burn"],
+            ["break", "bring", "be", "awake", "begin", "blow", "become", "bend", "bite", "beat"],
+            ["rise", "run", "mean", "make", "put", "ring", "pay", "read", "ride", "meet"],
+            ["sleep", "speak", "see", "say", "show", "sit", "send", "shut", "set", "sell"],
+            ["throw", "understand", "stand", "spend", "teach", "think", "take", "tear", "tell", "swim"],
+            ["buy", "bring", "wear", "wake", "begin", "sleep", "write", "know", "eat", "win"],
+            ["lose", "see", "come", "do", "choose", "meet", "keep", "go", "be", "grow"]
         ]
     },
 
@@ -91,23 +107,42 @@
     "my_ships": [
         {
             "size": 5,
-            "position": "a3",
-            "is_vertical": false
-        }
-    ],
-
-    "enemy_ships": [
+            "position": "b2",
+            "is_vertical": true
+        },
         {
-            "size": 5,
+            "size": 4,
             "position": "b4",
+            "is_vertical": false
+        },
+        {
+            "size": 3,
+            "position": "e6",
+            "is_vertical": false
+        },
+        {
+            "size": 2,
+            "position": "d4",
             "is_vertical": true
         },
         {
             "size": 2,
-            "position": "d6",
-            "is_vertical": false
+            "position": "g4",
+            "is_vertical": true
+        },
+        {
+            "size": 1,
+            "position": "i6",
+            "is_vertical": true
+        },
+        {
+            "size": 1,
+            "position": "h9",
+            "is_vertical": true
         }
     ],
+
+    "enemy_ships": [],
 
     "my_shots": {
     },
