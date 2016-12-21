@@ -91,29 +91,49 @@
     "my_ships": [
         {
             "size": 5,
-            "position": "a3",
+            "position": "i5",
             "is_vertical": false
-        }
-    ],
-
-    "enemy_ships": [
+        },
         {
-            "size": 5,
-            "position": "b4",
+            "size": 4,
+            "position": "c2",
+            "is_vertical": true
+        },
+        {
+            "size": 3,
+            "position": "b9",
             "is_vertical": true
         },
         {
             "size": 2,
-            "position": "d6",
-            "is_vertical": false
+            "position": "f9",
+            "is_vertical": true
+        },
+        {
+            "size": 2,
+            "position": "b5",
+            "is_vertical": true
+        },        
+        {
+            "size": 1,
+            "position": "i2",
+            "is_vertical": true
+        },
+        {
+            "size": 1,
+            "position": "f7",
+            "is_vertical": true
         }
+    ],
+
+    "enemy_ships": [        
     ],
 
     "my_shots": {
     },
 
-    "enemy_shots": {        
+    "enemy_shots": {
     },
 
-    "my_turn": true
+    "my_turn": false
 }
