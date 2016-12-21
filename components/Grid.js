@@ -23,6 +23,9 @@ var Grid = Vue.component('Grid', function (resolve, reject) {
                     // alert(`Now tell me the 2nd / 3rd form for the verb: ${verb} - ? - ?`);
                     var confirmed = confirm("Were you familiar with this verb`s forms?");
                     this.$emit('shot', cell_name, confirmed ? 'injured' : 'aimed');
+                },
+                cleck_ship_presence: function (cell_name) {
+                    return Math.random() > 0.5;
                 }
             },
             data: function () {

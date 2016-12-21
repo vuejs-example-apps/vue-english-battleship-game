@@ -13,7 +13,7 @@
         }
 
         .grid tr td {
-            border: 1px solid black;
+            border: 1px solid gray;
             position: relative;
         }
 
@@ -27,6 +27,11 @@
             .grid tr td .word {
                 font-weight: bold;
             }
+
+        .grid tr td.ship {
+            border-color: black;
+            border-width: 5px;
+        }
 
     .grid.game-mode td {
         width: 5em;
