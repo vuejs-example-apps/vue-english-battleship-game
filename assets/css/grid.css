@@ -33,3 +33,18 @@
         height: 5em;
         cursor: crosshair;
     }
+        .grid.game-mode td.miss {
+            background: green;
+        }
+
+        .grid.game-mode td.aimed {
+            background: yellow;
+        }
+
+        .grid.game-mode td.injured {
+            background: orange;
+        }
+
+        .grid.game-mode td.killed {
+            background: red;
+        }

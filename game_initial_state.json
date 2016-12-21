@@ -104,18 +104,10 @@
         }
     ],
 
-    "my_shots": {
-        "a0": "miss",
-        "a1": "aimed",
-        "a2": "injured",
-        "a3": "killed"
+    "my_shots": {        
     },
 
-    "enemy_shots": {
-        "b0": "miss",
-        "b1": "aimed",
-        "b2": "injured",
-        "b3": "killed"
+    "enemy_shots": {        
     },
 
     "my_turn": false
