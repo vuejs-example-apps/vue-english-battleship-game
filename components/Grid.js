@@ -2,17 +2,162 @@ var Grid = Vue.component('Grid', function (resolve, reject) {
     ajax.get("/components/Grid.tpl.html", function (template_string) {
         resolve({
             template: template_string,
-            props: ['name', 'words', 'mode', 'ships', 'shots', 'mine'],
+            props: {
+                name: {
+                    type: String,
+                    required: true,
+                    default: 'Unnamed Grid'
+                },
+                words: {
+                    type: Array,
+                    required: false,
+                    default: function () {
+                        return [
+                            ["", "", "", "", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", "", "", "", ""]
+                        ];
+                    }
+                },
+                mode: {
+                    type: String,
+                    required: true,
+                    default: 'game'
+                },
+                ships_available: {
+                    type: Array,
+                    required: false,
+                    default: function () {
+                        return [
+                            {
+                                "type": "carrier",
+                                "size": 5
+                            },
+                            {
+                                "type": "battlecruiser",
+                                "size": 4
+                            },
+                            {
+                                "type": "destroyer",
+                                "size": 3
+                            },
+                            {
+                                "type": "frigate",
+                                "size": 2
+                            },
+                            {
+                                "type": "frigate",
+                                "size": 2
+                            },
+                            {
+                                "type": "submarine",
+                                "size": 1
+                            },
+                            {
+                                "type": "submarine",
+                                "size": 1
+                            }
+                        ];
+                    }
+                },
+                ships: {
+                    type: Array,
+                    required: false,
+                    default: function () {
+                        return [];
+                    }
+                },
+                shots: {
+                    type: Object,
+                    default: function () {
+                        return {};
+                    },
+                    required: false
+                },
+                mine: {
+                    type: Boolean,
+                    required: false,
+                    default: true
+                }
+            },
             methods: {
+
                 word_for_cell: function (cell_name) {
                     var row = cell_name.charCodeAt(0) - 'a'.charCodeAt(0);
                     var col = parseInt(cell_name.slice(1)) - 1;
                     return this.words[row][col];
                 },
-                handle_cell_shot: function (cell_name) {
-                    return this.mine ? this.handle_my_cell_shot(cell_name) : this.handle_enemy_cell_shot(cell_name);
+
+                handle_cell_click: function (cell_name) {
+                    switch (this.mode) {
+                        case 'ship-placement':
+                                return this._handle_ship_placement_click(cell_name)
+                                break;
+                        case 'game':
+                                return this.mine ?
+                                    this._handle_my_shot(cell_name) :
+                                    this._handle_enemy_shot(cell_name);
+                                break;
+                        default:
+                            return false;
+                    }
                 },
-                handle_my_cell_shot: function (cell_name) {
+
+                _get_next_available_ship: function () {
+                    return this.ships_available[Object.keys(this.ships).length];
+                },
+
+                _handle_ship_placement_click: function (cell_name) {
+                    var existing_ship = this._get_ship(cell_name);                    
+                    console.log('existing_ship', existing_ship);
+                    if (existing_ship) {
+                        var existing_ship_index = existing_ship[0];
+                        existing_ship = existing_ship[1];
+                        existing_ship.is_vertical = !existing_ship.is_vertical;
+                        this.ships[existing_ship_index] = existing_ship;
+                    } else {
+                        var new_ship = this._get_next_available_ship()
+                        console.log('new_ship', new_ship, this.ships_available);
+                        if (!new_ship) {
+                            console.log('all ships placed');
+                            this.$emit('ships-placed', this.ships);
+                            return;
+                        }
+                        new_ship.position = cell_name;                        
+                        if (this._check_placement_possibility(new_ship, cell_name)) {                            
+                            this.ships.push({
+                                size: new_ship.size,
+                                position: new_ship.position,
+                                is_vertical: new_ship.is_vertical
+                            });
+                            console.log('placed horizontally', this.ships);
+                        } else {
+                            new_ship.is_vertical = true;
+                            if (this._check_placement_possibility(new_ship, cell_name)) {
+                                this.ships.push({
+                                    size: new_ship.size,
+                                    position: new_ship.position,
+                                    is_vertical: new_ship.is_vertical
+                                });
+                                console.log('placed vertically', this.ships);
+                            }
+                        }
+                    }
+                    console.log('_handle_ship_placement_click out');
+                },
+
+                _check_placement_possibility: function (ship, cell_name) {
+                    return true; // TODO
+                },
+
+                _handle_my_shot: function (cell_name) {
                     var previous_shot = this.shots[cell_name];
                     if (previous_shot && previous_shot !== 'aimed') {
                         return;
@@ -23,10 +168,12 @@ var Grid = Vue.component('Grid', function (resolve, reject) {
                         return;
                     }
                     alert('Your ship has been attacked!');
-                    var hit_confirmed = confirm(`Is your opponent familiar with the forms of the verb ${this.word_for_cell(cell_name)}?`);
+                    var hit_confirmed = confirm(
+                        `Is your opponent familiar with the forms of the verb ${this.word_for_cell(cell_name)}?`);
                     this.$emit('shot', cell_name, hit_confirmed ? 'damaged' : 'aimed');
                 },
-                handle_enemy_cell_shot: function (cell_name) {
+
+                _handle_enemy_shot: function (cell_name) {
                     var previous_shot = this.shots[cell_name];
                     if (previous_shot && previous_shot !== 'aimed') {
                         return;
@@ -47,7 +194,13 @@ var Grid = Vue.component('Grid', function (resolve, reject) {
                     }
 
                 },
+
                 check_ship_presence: function (cell_name) {
+                    return !!this._get_ship(cell_name);
+                },
+
+                _get_ship: function (cell_name) {
+                    // the task is small, so we can afford to use simple brute force approach
                     var row = cell_name.charCodeAt(0) - 'a'.charCodeAt(0);
                     var col = parseInt(cell_name.slice(1)) - 1;
                     for (i in this.ships) {             
@@ -58,22 +211,13 @@ var Grid = Vue.component('Grid', function (resolve, reject) {
                         if (ship.is_vertical) {        
                             var diff = row - ship_row;
                             if (ship_col == col && diff < ship.size && diff >= 0) {
-                                ship_located = true;
+                                return [i, ship];
                             }
-                        } else {
-                            // horizontal
+                        } else { // horizontal                            
                             var diff = col - ship_col;
                             if (ship_row == row && diff < ship.size && diff >= 0) {
-                                ship_located = true;
-                            }
-                            /*
-                            Consider ship of size 5 at a3: you want to match on a3, a4, a5, a6, a7 and not a1, a2, a8, a9, a10
-                            diff === (col - ship_col) [-2, -1, 0, 1, 2, 3, 4, 5]
-                            */
-                        }
-                        // console.log(cell_name, row, col, ship.position, ship_row, ship_col, ship.is_vertical, ship_located);
-                        if (ship_located) {
-                            return true;
+                                return [i, ship];
+                            }                            
                         }
                     }
                     return false;

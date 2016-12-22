@@ -26,6 +26,10 @@ var App = Vue.component('Game', function (resolve, reject) {
                     take_a_shot: function (cell_name, result) {
                         this.enemy_shots[cell_name] = result;
                         this.my_turn = !this.my_turn;
+                    },
+                    handle_ships_placed: function (ships) {
+                        this.my_ships = ships;
+                        this.my_ships_placed = true;
                     }
                 }
             })

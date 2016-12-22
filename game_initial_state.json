@@ -26,22 +26,8 @@
         ]
     },
     
-    "grid_chosen": true,
-    "chosen_grid": {
-        "name": "S1",
-        "words": [
-            ["lose", "hold", "lay", "hurt", "know", "lead", "leave", "let", "keep", "lie"],
-            ["hit", "freeze", "grow", "get", "go", "hang", "have", "hear", "give", "hide"],
-            ["forget", "draw", "fall", "drive", "eat", "feel", "fight", "find", "drink", "fly"],
-            ["do", "buy", "catch", "build", "buy", "choose", "come", "cost", "burn", "cut"],
-            ["bring", "awake", "begin", "be", "become", "bend", "bite", "blow", "beat", "break"],
-            ["run", "make", "put", "mean", "pay", "read", "ride", "ring", "meet", "rise"],
-            ["speak", "say", "show", "see", "send", "shut", "set", "sit", "sell", "sleep"],
-            ["understand", "spend", "teach", "stand", "take", "tear", "tell", "think", "swim", "throw"],
-            ["bring", "wake", "begin", "wear", "write", "know", "eat", "sleep", "win", "buy"],
-            ["see", "do", "choose", "come", "keep", "go", "be", "meet", "grow", "lose"]
-        ]
-    },
+    "grid_chosen": false,
+    "chosen_grid": {},
 
     "enemy_grid": {
         "name": "Enemy Grid",
@@ -62,33 +48,35 @@
     "ships_available": [
         {
             "type": "carrier",
-            "size": 5,
-            "count": 1
+            "size": 5
         },
         {
             "type": "battlecruiser",
-            "size": 4,
-            "count": 1
+            "size": 4
         },
         {
             "type": "destroyer",
-            "size": 3,
-            "count": 1
+            "size": 3
         },
         {
             "type": "frigate",
-            "size": 2,
-            "count": 2
+            "size": 2
+        },
+        {
+            "type": "frigate",
+            "size": 2
         },
         {
             "type": "submarine",
-            "size": 2,
-            "count": 2
+            "size": 1
+        },
+        {
+            "type": "submarine",
+            "size": 1
         }
     ],
 
-    "my_ships_placed": true,
-    "my_ships": [
+    "ships_example_data": [
         {
             "size": 5,
             "position": "a3",
@@ -96,17 +84,11 @@
         }
     ],
 
+    "my_ships_placed": false,
+    "my_ships": [
+    ],
+
     "enemy_ships": [
-        {
-            "size": 5,
-            "position": "b4",
-            "is_vertical": true
-        },
-        {
-            "size": 2,
-            "position": "d6",
-            "is_vertical": false
-        }
     ],
 
     "my_shots": {

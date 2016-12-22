@@ -13,6 +13,8 @@
         }
 
         .grid tr td {
+            width: 5em;
+            height: 5em;        
             border: 1px solid gray;
             position: relative;
         }
@@ -34,8 +36,6 @@
         }
 
     .grid.game-mode td {
-        width: 5em;
-        height: 5em;
         cursor: crosshair;
     }
         .grid.game-mode td.miss {
@@ -53,3 +53,7 @@
         .grid.game-mode td.destroyed {
             background: red;
         }
+
+    .grid.ship-placement-mode td {
+        cursor: pointer;
+    }

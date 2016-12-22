@@ -27,7 +27,10 @@
     <div class="stage" v-else-if="grid_chosen">
         <h2>Please place your ships</h2>
         <div class="ship-placer">
-            <grid mode="ship-placement" :words="chosen_grid.words" :name="chosen_grid.name"/>
+            <grid mode="ship-placement"
+                  :words="chosen_grid.words" :name="chosen_grid.name"
+                  @ships-placed="handle_ships_placed"
+            />
         </div>
         <div class="controls">
             <button @click="reset_grid_choice">Back to grid choice</button>
