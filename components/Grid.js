@@ -154,7 +154,14 @@ var Grid = Vue.component('Grid', function (resolve, reject) {
                 },
 
                 _check_placement_possibility: function (ship, cell_name) {
-                    return true; // TODO
+                    var row = cell_name.charCodeAt(0) - 'a'.charCodeAt(0);
+                    var col = parseInt(cell_name.slice(1)) - 1;
+                    // can't position next to grid walls
+                    if (row == 0 || col == 0 || row == 9 || col == 9) return false;
+                    // can't position if not fitting into grid
+                    if (!ship.is_vertical && col + ship.size > 9) return false;
+                    if (ship.is_vertical && row + ship.size > 9) return false;
+                    return true; // TODO check other ships intersection
                 },
 
                 _handle_my_shot: function (cell_name) {
